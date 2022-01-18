@@ -26,13 +26,14 @@ import (
     fmt.Println()
     tiktok(name)
     vsco(name)
-
+    instagram(name)
+    twitter(name)
+ 
   }
 
   func tiktok(name string){
     url := "https://tiktok.com/@"+name
-    //fmt.Printf("[?] %v için tiktok taraması yapılıyor.\n",name)
-    color.Magenta("[?] %v için tiktok taraması yapılıyor.\n",name)
+    color.Magenta("[?] %v için TikTok taraması yapılıyor.\n",name)
     res,_ := http.Get(url)
 
     if res.StatusCode !=200{
@@ -46,7 +47,6 @@ import (
   func vsco(name string){
     
     url := "https://vsco.co/"+name+"/gallery"
-    //fmt.Printf("[?] %v için VSCO taraması yapılıyor.\n",name)
     color.Magenta("[?] %v için VSCO taraması yapılıyor.\n",name)
     res,_ := http.Get(url)
 
@@ -56,8 +56,31 @@ import (
     }else{
       color.Cyan("[+] Hesap bulundu")
     }
-
-
-
     }
-  
+
+
+    func instagram(name string){
+    url := "https://instagram.com/"+name
+    color.Magenta("[?] %v için Instagram taraması yapılıyor.\n",name)
+    res,_ := http.Get(url)
+
+    if res.StatusCode !=200{
+      color.Red("[-] Hesap bulunamadı")
+      return
+    }else{
+      color.Cyan("[+] Hesap bulundu")
+    }
+    }
+
+    func twitter(name string){
+    url := "https://twitter.com/"+name
+    color.Magenta("[?] %v için Twitter taraması yapılıyor.\n",name)
+    res,_ := http.Get(url)
+
+    if res.StatusCode !=200{
+      color.Red("[-] Hesap bulunamadı")
+      return
+    }else{
+      color.Cyan("[+] Hesap bulundu")
+    }
+    }
